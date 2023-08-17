@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón Latiendo</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0b1522;
+    }
+
+    .heart-container {
+        position: relative;
+        animation: touchHeart 3s linear 1;
+        cursor: pointer;
+    }
+
+    .heart {
+        height: 250px;
+        width: 250px;
+        background-color: red;
+        position: relative;
+        transform: rotate(45deg);
+        box-shadow: -20px 20px 150px #f20044;
+        animation: palpitar 0.5s linear infinite alternate;
+    }
+
+    .overlay {
+        position: absolute;
+        top: -20px; /* Ajustar la posición vertical */
+        left: 0;
+        width: 120%;
+        height: 120%;
+        background: transparent;
+        display: none;
+        animation: overlayPulse 0.5s linear infinite alternate;
+    }
+
+    .overlay:hover {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .contenido {
+        position: absolute;
+        top: 30%; /* Ajustar la posición vertical */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        display: none;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    h1, h2 {
+        color: white;
+        margin: 0;
+        font-size: 1.5rem;
+        white-space: normal;
+    }
+
+    @keyframes palpitar {
+        0% {
+            transform: rotate(45deg) scale(1.1);
+        }
+        100% {
+            transform: rotate(45deg) scale(1);
+        }
+    }
+
+    @keyframes touchHeart {
+        0% {
+            top: 0;
+        }
+        100% {
+            top: 50px;
+        }
+    }
+
+    @keyframes overlayPulse {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(1.1);
+        }
+    }
+
+    .heart::before {
+        content: "";
+        position: absolute;
+        height: 250px;
+        width: 250px;
+        background: red;
+        right: 50%;
+        border-radius: 50%;
+        box-shadow: 20px 20px 150px #f20044;
+    }
+
+    .heart::after {
+        content: "";
+        position: absolute;
+        height: 250px;
+        width: 250px;
+        background: red;
+        top: -50%;
+        border-radius: 50%;
+        box-shadow: 20px 20px 150px #f20044;
+    }
+</style>
+<body>
+    <div class="heart-container" onmouseover="showOverlay()" onmouseout="hideOverlay()" onclick="showMessage()">
+        <div class="heart"></div>
+        <div class="overlay"></div>
+        <div class="contenido" id="message">
+            <h1>PARA:angie</h1>
+            <h2>"En el lenguaje de mi corazón, solo tú eres la variable que completa mi ecuación."❤️ </h2>
+        </div>
+    </div>
+    <script>
+        function showOverlay() {
+            document.querySelector('.overlay').style.display = 'block';
+        }
+        
+        function hideOverlay() {
+            document.querySelector('.overlay').style.display = 'none';
+        }
+
+        function showMessage() {
+            const message = document.getElementById('message');
+            message.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
